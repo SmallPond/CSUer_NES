@@ -9,16 +9,16 @@ make
 ./myNES ./resources/Super_mario_brothers.nes
 ```
 
-## Day1:
+## Lab1:
 
 6502 拥有 16 位地址空间，寻址能力为 64 KB。但是 NES 实际只有 2 KB的内部 RAM，对应的地址范围是 0000～0799。而剩余的地址空间则用于访问 PPU、 APU、游戏卡以及输入设备等。  
 6502 上有些地址总线的引脚并没有布线，所以有很大的一块内存空间实际上都映射到了之前的空间。例如 RAM 中的 1000～17FF 就映射到了 0000～07FF，这意味着向 1000 写数据等价于向 0000 写数据。 
 
 模拟6502 CPU 、总线和内存RAM，实现CPU可从内存中读写数据和取指令 
-## Day2: 
+## Lab2: 
 
 参考6502 CPU 的datasheet，实现了CPU对指令的解码执行
-## Day3
+## Lab3
 [注] main分支删除了为了测试CPU工作而添加的一些不必要接口，例如`MainBus(Cartridge& cartridge)`、`Byte GetACC() { return r_A;}`，如果需要测试，需要切换到Day3分支
 ```c
 git checkout day3
@@ -84,7 +84,7 @@ MainBus Read a Byte: 2
 [+]执行4+2的操作后，ACC寄存器的值为:6
 ```
 
-# Day4_Mapper实现
+# Lab4_Mapper实现
 
 ## Mapper(继承与多态)
 > 预留给游戏卡的地址空间是有限的，游戏卡的程序内存（Program Memory）被限制在 32 KB，角色内存（Character Memory）被限制在 8 KB。为了突破这种限制，人们发明了内存映射器（Mapper）。  
@@ -132,7 +132,7 @@ Flags6的高四位记录了mapper number的低四位，Flags7的高四位记录�
 
 增加 Emulator 以综合各个组件
 
-# Day5
+# Lab5
 
 ## SFML多媒体库配置和使用
 根据自己所使用的操作系统，在[SFML官方文档](https://www.sfml-dev.org/tutorials/2.5/)找到对应的配置方式。
@@ -158,7 +158,7 @@ LDFLAGS = -L/usr/local/Cellar/sfml/2.5.1/lib -lsfml-graphics -lsfml-window -lsfm
 
 在使用 SFML 库创建一个 windows后，内容的填充使用 VirtualScreen 类来实现。PictureBus 类似于我们之前实现的 MainBus，不过 PictureBus 是用来连接PPU（Picture Processing Unit,类比于现在的显卡）和 vdeio 相关的存储的。 
 
-# Day6
+# Lab6
 
 反汇编工具 [md6502](http://nesdev.com/md6502.zip) Windows 下可用，用法：
 ```

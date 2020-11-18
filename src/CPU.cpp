@@ -53,6 +53,7 @@ Byte CPU::PullStack()
     
 }
 
+
 // 设置寄存器f_Z与f_N的值
 void CPU::SetZN(Byte value)
 {
@@ -87,6 +88,16 @@ void CPU::Step()
                 f_Z << 1 |
                 f_C;
     */ 
+
+   // LOG(Info) << "CPU Step, PC is 0x" 
+    //     << std::hex 
+    //     <<  static_cast<int>(GetPC())
+    //     << "\t opcode is:" 
+    //     << std::hex 
+    //     <<  static_cast<int>(opcode)  
+    //     << "\t CycleLength is " << CycleLength
+    //         << std::endl;
+    
     //请补全
 
 

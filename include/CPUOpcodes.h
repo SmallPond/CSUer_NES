@@ -1,6 +1,7 @@
 #ifndef _CPUOPCODES_H_
 #define _CPUOPCODES_H_
-/* 参考 doc/rockwell_r650x.pdf文件 */
+/* 参考 doc/rockwell_r650x.pdf文件 
+这个头文件可以帮助代码完善*/
 
 const auto InstructionModeMask = 0x3;
 

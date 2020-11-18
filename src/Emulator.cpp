@@ -3,7 +3,8 @@
 
 
 Emulator::Emulator(): 
-    m_cpu(m_bus)
+    m_cpu(m_bus),
+    m_screenScale(2.f)
 {
 
 }
@@ -26,5 +27,20 @@ void Emulator::Run(std::string rom_path)
     /* CPU设置*/
     //请补全
 
+
+    /* 窗口创建于设置 */
+    //请补全
+
+
+    /* 颜色填充*/
+    // 请补全
+
+    // sf::Event event;
+    while(m_window.isOpen())
+    {
+        //请补全
+
+        
+    }
 
 }

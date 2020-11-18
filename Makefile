@@ -3,11 +3,12 @@ CC = g++
 
 INC = ./include
 SFML_INC = /usr/local/Cellar/sfml/2.5.1/include
+SFML_LIB = /usr/local/Cellar/sfml/2.5.1/lib
 SRC = ./src
 OBJ = ./build
 
 CFLAGS = -g -Wall -I${INC} -I${SFML_INC} -std=c++11 
-LDFLAGS = -L/usr/local/Cellar/sfml/2.5.1/lib -lsfml-graphics -lsfml-window -lsfml-system
+LDFLAGS = -L${SFML_LIB} -lsfml-graphics -lsfml-window -lsfml-system
 # 扩展通配符，不要在$(后加空格，否则无法解析
 
 
@@ -27,8 +28,9 @@ TARGET = myNES
 
 # 所有的中间文件生成目标文件
 # $@目标文件 $^所有依赖文件 $< 第一个依赖文件
+# 血的教训：$(LDFLAGS)一定要放到最后，不然在Ubuntu会链接报错
 ${TARGET}: ${OBJS}
-	$(CC) $(LDFLAGS) ${OBJS} -o $@  
+	$(CC)  ${OBJS} -o $@   $(LDFLAGS)
 
 #生成中间文件
 ${OBJ}/%.o:${SRC}/%.cpp

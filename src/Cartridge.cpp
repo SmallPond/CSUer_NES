@@ -15,6 +15,21 @@ const std::vector<Byte>& Cartridge::GetVROM()
     return m_CHR_ROM;
 }
 
+Byte Cartridge::GetMapper()
+{
+    return m_mapperNumber;
+}
+
+Byte Cartridge::GetNameTableMirroring()
+{
+    return m_nameTableMirroring;
+}
+
+bool Cartridge::HasExtendedRAM()
+{
+    return m_extendedRAM;
+}
+
 /*
  * 完成.NES的加载与解析
  * .NES 文件头格式 https://wiki.nesdev.com/w/index.php/INES

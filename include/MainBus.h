@@ -5,27 +5,22 @@
 #include <vector>
 
 #include <Cartridge.h>
+#include <Mapper.h>
 
 /* 总线下不仅仅挂载了内存，如何设计这个类名还值得细细考虑一下 */
 class MainBus
 {
 public:
-    // 请补全，包括MainBus初始化，Read/Write方法等
+    // 请补全，包括MainBus初始化，Read/Write函数等
 
 
-    /* 
-    在day3时这样写并不准确，因为还没考虑mapper，
-    仅仅为了测试CPU能否正常执行指令
-    */
-    MainBus(Cartridge& cartridge);
+    // 还得加上Mapper的设置函数
 
 private:
-    /* 使用vector，创建自己的内存RAM与扩展RAM*/
+    /* 使用vector，创建自己的内存RAM与扩展RAM，别忘了Mapper*/    
     // 请补全
 
     
-    /* 在day3时这么定义并不准确，因为还没考虑mapper的存在 */
-    Cartridge cartridge;
 };
 
 #endif

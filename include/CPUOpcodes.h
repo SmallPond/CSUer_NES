@@ -1,7 +1,6 @@
 #ifndef _CPUOPCODES_H_
 #define _CPUOPCODES_H_
-/* 参考 doc/rockwell_r650x.pdf文件 
-这个头文件可以帮助代码完善*/
+/* 参考 doc/rockwell_r650x.pdf文件 */
 
 const auto InstructionModeMask = 0x3;
 
@@ -23,7 +22,10 @@ const auto BranchOnFlagShift = 6;
 /* 6502 CPU 操作码相关定义 */
 /* 复位向量地址，当CPU复位时，CPU将从此处地址开始取指执行 */
 const auto ResetVector = 0xfffc;
-
+const auto IRQVector = 0xfffe;
+/* non-maskable interrupts */
+/* When a VBlank interrupt occurs, CPU pushes return address and the status register on stack, then jumps to the address stored at location $FFFA */
+const auto NMIVector = 0xfffa;
 enum BranchOnFlag
 {
     Negative,

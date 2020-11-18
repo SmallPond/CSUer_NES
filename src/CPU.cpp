@@ -53,6 +53,45 @@ Byte CPU::PullStack()
     
 }
 
+void CPU::Interrupt(InterruptType type)
+{
+    if (f_I && type != NMI && type != BRK_)
+        return;
+
+    if (type == BRK_) //Add one if BRK, a quirk of 6502
+        ++r_PC;
+
+    // 保存 PC 值
+    PushStack(r_PC >> 8);
+    PushStack(r_PC);
+
+    Byte flags = f_N << 7 |
+                    f_V << 6 |
+                    1 << 5 | //unused bit, supposed to be always 1
+        (type == BRK_) << 4 | //B flag set if BRK
+                    f_D << 3 |
+                    f_I << 2 |
+                    f_Z << 1 |
+                    f_C;
+    // 保存状态
+    PushStack(flags);
+
+    f_I = true;
+
+    switch (type)
+    {
+        case IRQ:
+        case BRK_:
+            // 中断向量
+            r_PC = ReadAddress(IRQVector);
+            break;
+        case NMI:
+            r_PC = ReadAddress(NMIVector);
+            break;
+    }
+
+    m_skipCycles += 7;
+}
 
 // 设置寄存器f_Z与f_N的值
 void CPU::SetZN(Byte value)
@@ -67,6 +106,12 @@ void CPU::SetPageCrossed(Address a, Address b, int inc)
     //Page is determined by the high byte
     if ((a & 0xff00) != (b & 0xff00))
         m_skipCycles += inc;
+}
+
+void CPU::SkipDMACycles()
+{
+    m_skipCycles += 513; //256 read + 256 write + 1 dummy read
+    m_skipCycles += (m_cycles & 1); //+1 if on odd cycle
 }
 
 // 实现解码执行

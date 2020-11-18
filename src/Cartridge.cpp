@@ -2,7 +2,10 @@
 #include<fstream>
 #include <Log.h>
 
-Cartridge::Cartridge()
+Cartridge::Cartridge():
+    m_nameTableMirroring(0),
+    m_mapperNumber(0),
+    m_extendedRAM(false)
 {
 
 }

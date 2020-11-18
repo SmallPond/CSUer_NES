@@ -4,6 +4,24 @@
 #include <Log.h>
 /* CPU 6502 */
 
+/*
+参考：中文版 http://nesdev.com/nes_c.txt
+     英文版： http://fms.komkon.org/EMUL8/NES.html
+CPU Memory Map
+--------------------------------------- $10000
+ Upper Bank of Cartridge ROM            卡带的上层ROM
+--------------------------------------- $C000
+ Lower Bank of Cartridge ROM            卡带的下层ROM
+--------------------------------------- $8000
+ Cartridge RAM (may be battery-backed)  卡带的RAM（可能有电池支持）
+--------------------------------------- $6000
+ Expansion Modules                      扩充的模块
+--------------------------------------- $5000
+ Input/Output                           输入/输出
+--------------------------------------- $2000
+ 2kB Internal RAM, mirrored 4 times     2KB的内部RAM，做4次镜象
+--------------------------------------- $0000
+*/
 CPU::CPU(MainBus &mem) : m_bus(mem) 
 {
     
@@ -591,5 +609,3 @@ bool CPU::ExecuteType0(Byte opcode)
     }
     return false;
 }
-
-

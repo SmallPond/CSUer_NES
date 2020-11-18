@@ -2,16 +2,16 @@
 
 选择不同的分支来查看每次增加的内容，以达到分解整个项目实现的目的。
 
-## Day1:
+## Lab1:
 
 6502 拥有 16 位地址空间，寻址能力为 64 KB。但是 NES 实际只有 2 KB的内部 RAM，对应的地址范围是 0000～0799。而剩余的地址空间则用于访问 PPU、 APU、游戏卡以及输入设备等。  
 6502 上有些地址总线的引脚并没有布线，所以有很大的一块内存空间实际上都映射到了之前的空间。例如 RAM 中的 1000～17FF 就映射到了 0000～07FF，这意味着向 1000 写数据等价于向 0000 写数据。 
 
 模拟6502 CPU 、总线和内存RAM，实现CPU可从内存中读写数据和取指令 
-## Day2: 
+## Lab2: 
 
 参考6502 CPU 的datasheet，实现了CPU对指令的解码执行
-## Day3
+## Lab3
 [注] main分支删除了为了测试CPU工作而添加的一些不必要接口，例如`MainBus(Cartridge& cartridge)`、`Byte GetACC() { return r_A;}`，如果需要测试，需要切换到Day3分支
 ```c
 git checkout day3
@@ -77,7 +77,7 @@ MainBus Read a Byte: 2
 [+]执行4+2的操作后，ACC寄存器的值为:6
 ```
 
-# Day4_Mapper实现
+# Lab4_Mapper实现
 
 ## Mapper(继承与多态)
 > 预留给游戏卡的地址空间是有限的，游戏卡的程序内存（Program Memory）被限制在 32 KB，角色内存（Character Memory）被限制在 8 KB。为了突破这种限制，人们发明了内存映射器（Mapper）。  

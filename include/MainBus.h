@@ -8,13 +8,13 @@
 class MainBus
 {
 public:
-    // 请补全
-    
+    // 请补全，包括MainBus初始化，Read/Write方法等
+
 
 private:
     /* 使用vector，创建自己的内存RAM与扩展RAM*/
     // 请补全
-    
+
     
 };
 

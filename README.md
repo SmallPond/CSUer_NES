@@ -34,7 +34,7 @@ git commit -m "输入你的提示文本"
 # 5.将分支Lab2也合并到主分支start，去开启实验2
 git merge origin/Lab2
 
-# 6.此时会产生冲突，
+# 6.此时会产生冲突，有冲突其实已合并完成了，改好冲突再提交就已经可以继续写了
 <<<<<<< HEAD
 =======
 - Lab2: 参考6502 CPU 的datasheet，实现了CPU对指令的解码执行
@@ -44,7 +44,7 @@ git merge origin/Lab2
 git add .
 git commit -m "输入你的提示文本"
 
-# 8.再次将分支Lab2也合并到主分支start
+# 8.再次将分支Lab2合并一次，会提示Already up to date
 git merge origin/Lab2
 
 # 9.合并成功，开始补全Lab2代码。进入后面实验时，循环步骤4 ~ 8

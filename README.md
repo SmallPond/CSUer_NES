@@ -48,10 +48,11 @@ git commit -m "输入你的提示文本"
 git merge origin/Lab2
 
 # 9.合并成功，开始补全Lab2代码。进入后面实验时，循环步骤4 ~ 8
+
+# 10.可切换到其它分支进行查看,之后再切回主分支start即可
+git checkout LabN
+git checkout start
 ```
-
-
-![运行图](./images/GameScreen.png)
 
 
 # 参考文献

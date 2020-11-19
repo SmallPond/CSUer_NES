@@ -8,44 +8,46 @@
 - Lab2：参考6502 CPU 的datasheet，实现了CPU对指令的解码执行
 - Lab3：解析卡带（Cartidge 游戏卡）的文件格式，编写简单的.nes程序（加法运算），测试 CPU 能否正常执行程序。
 - Lab4：实现 Mapper，预留给游戏卡的地址空间是有限的，游戏卡的程序内存（Program Memory）被限制在 32 KB，角色内存（Character Memory）被限制在 8 KB。为了突破这种限制，人们发明了内存映射器（Mapper）。
-内存映射器是游戏卡中的一个硬件，具有存储体空间切换（Bank Switching）的功能，以将新的程序或角色内存引入到可寻址的内存空间。
+  - 内存映射器是游戏卡中的一个硬件，具有存储体空间切换（Bank Switching）的功能，以将新的程序或角色内存引入到可寻址的内存空间。
 - Lab5：多媒体库（SFML 简单快速多媒体库）的配置和使用，并构建PPU总线（Picture Bus）以及虚拟屏幕(Virtual Screen)的实现
 - Lab6: 实现 PPU 的各个回调函数，显示游戏画面
 - Lab7：增加按键控制，愉快游戏！
 
-## SFML 库的配置
-根据自己所使用的操作系统，在[SFML官方文档](https://www.sfml-dev.org/tutorials/2.5/)找到对应的配置方式。
 
-建议最好使用官方已经编译好的 SDK，替换到系统的默认动态链接库目录或任意目录下（此时编译链接时需要制定对应的头文件和库文件目录）
+## 实验开始
+start分支为master分支，然后经过修改-提交-合并-修改冲突-提交-合并这六个过程，将其它分支依次往start分支上合并，并补全代码。
 
-以我的环境：MacOS VSCode 为例。 在 Macos 下通过`brew install sfml`安装 SFML SDK后，将在`/usr/local/Cellar/sfml/2.5.1`目录下保存头文件和库文件。在 Makefile 文件下需要指定`CFLAGS`和`LDFLAGS`
+```sh
+# 1.克隆仓库，当前位于主分支start
+git clone https://github.com/SmallPond/CSUer_NES.git
 
-```C
-SFML_INC = /usr/local/Cellar/sfml/2.5.1/include
-SFML_LIB = /usr/local/Cellar/sfml/2.5.1/lib
+# 2.主分支start不需要修改，直接将分支Lab1合并到主分支start
+git merge origin/Lab1
 
-CFLAGS = -g -Wall -I${INC} -I${SFML_INC} -std=c++11 
-LDFLAGS = -L${SFML_LIB} -lsfml-graphics -lsfml-window -lsfml-system
-```
+# 3.补全Lab1的代码，运行成功
+...
 
-## 执行
+# 4.提交到git本地仓库
+git add .
+git commit -m "输入你的提示文本"
 
-```c
+# 5.将分支Lab2也合并到主分支start，去开启实验2
+git merge origin/Lab2
 
-git clone https://github.com/SmallPond/MyNES
+# 6.此时会产生冲突，
+<<<<<<< HEAD
+=======
+- Lab2: 参考6502 CPU 的datasheet，实现了CPU对指令的解码执行
+>>>>>>> origin/Lab2
 
-cd MyNES
+# 7.直接将<<<<<<< HEAD ======= >>>>>>> origin/Lab2这些多余字符去掉，再次提交到本地仓库
+git add .
+git commit -m "输入你的提示文本"
 
-mkdir build
+# 8.再次将分支Lab2也合并到主分支start
+git merge origin/Lab2
 
-# 编译
-make
-
-# 【注意】若没有将 SFML 库放置到系统默认的目录下，执行时需要指定动态链接库的路径
-export LD_LIBRARY_PATH=<sfml-install-path>/lib
-
-# 执行
-./myNES ./resources/Super_mario_brothers.nes
+# 9.合并成功，开始补全Lab2代码。进入后面实验时，循环步骤4 ~ 8
 ```
 
 

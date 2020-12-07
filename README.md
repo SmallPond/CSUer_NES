@@ -21,6 +21,10 @@ start分支为主分支（默认分支），然后经过'修改-提交-合并-�
 # 1.克隆仓库，当前位于主分支start
 git clone https://github.com/SmallPond/CSUer_NES.git
 
+# 切换到工程目录并创建 build 文件夹
+cd CSUer_NES
+mkdir build
+
 # 2.主分支start不需要修改，直接将分支Lab1合并到主分支start
 git merge origin/Lab1
 

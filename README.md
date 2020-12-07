@@ -24,8 +24,23 @@ git clone https://github.com/SmallPond/CSUer_NES.git
 # 2.主分支start不需要修改，直接将分支Lab1合并到主分支start
 git merge origin/Lab1
 
-# 3.补全Lab1的代码，运行成功
+# 3.补全Lab1的代码，在工程目录下执行 make 命令，类似的输出如下：
+
+db@db:~/CUSer_NES$ make
+./src/CPU.cpp ./src/MainBus.cpp ./src/main.cpp
+./build/CPU.o ./build/MainBus.o ./build/main.o
+g++  -g -Wall -I./include -std=c++11  -o build/CPU.o -c src/CPU.cpp
+g++  -g -Wall -I./include -std=c++11  -o build/MainBus.o -c src/MainBus.cpp
+g++  -g -Wall -I./include -std=c++11  -o build/main.o -c src/main.cpp
+g++  ./build/CPU.o ./build/MainBus.o ./build/main.o -o myNES   
 ...
+
+# 若通过编译可生成myNES文件，在控制台执行./myNES 可打印出如下信息（对应执行了 main.cpp的逻辑）
+
+db@db:~/MyNES$ ./myNES 
+After reset the PC is :0
+After Step the PC is :1
+
 
 # 4.提交到git本地仓库
 git add .
